@@ -1,0 +1,34 @@
+Durante las experimentaciones se comprobó que el método para determinar la ruta
+al host de destino es de naturaleza probabilística ya que hubo veces (con muy
+poca probabilidad igualmente) en las que, entre dos Echo Request, para un mismo
+TTL se daban varias IPs (nunca más de 3) dificultando esto la veracidad de la
+ruta.
+
+Con respecto al método de detección de Outliers de Cimbala se pudo comprobar
+que este resulta bastante robusto y efectivo para una cantidad pequeña de
+muestras. Aunque tanto en el experimento de las redes de las universidades, se pudo observar que
+un único valor de corte, que no depende de la cantidad de muestras, establecido en cualquier número
+entre 1.4 y 1.6 aproximadamente detecta exactamente los mismos outliers que el
+método de Cimbala. Para solucionar los falsos positivos/falsos negativos de los
+distintos resultados se concluyó que ya no es posible un único valor de corte ya
+que para el de la Habana (bajo el supuesto que la verdadera ruta pasa por
+Italia) como se menciono anteriormente debería ser 1.2, para el de la red de
+universidades de Australia 1.9 y este a su vez también sirve para el de la
+universidad de Rusia. También al observar los valores considerados outliers por cimbala
+de los experimentos 1.87, 2.168, 2.30 notamos que estos tienen una media de 2.11
+y una desviación estandar 0.17 (es decir un intervalo -1.94, 2.28) lo que nos
+deja la pregunta abierta que si al aumentar la cantidad de experimentaciones
+el promedio de los valores $Z_i$ del tiempo de enlace de los cables intercontinentales
+tienen una media y una desviación similar a la calculada dándonos como aplicación
+alternativa la de detectar gateways que se encuentran operando con dificultades (lentamente).
+
+Adicionalmente durante la experimentación se pudo demostrar empíricamente como los servicio
+de localización como PlotIP y GeoIPTool son poco precisos, no confiables, y contienen bastantes
+errores en su base de datos para la determinación de verdaderos enlaces intercontinentales o
+transatlánticos llegando a ser más preciso o algorítmico en ciertas ocasiones las mediciones de tiempo
+de la ida y vuelta de los paquetes junto con el método propuesto por Cimbala.
+
+Finalmente, pudimos entender la arquitectura de algunos sitios de la Internet gracias al protocolo \textbf{ICMP} (ie. como se llega a casi
+cualquier host por ejemplo en menos de 35 saltos, los distintos nodos que actuan siempre, etc) como lo son en este caso
+estas universidades o como tantos de los sitios web que están alojados en otros
+continentes
